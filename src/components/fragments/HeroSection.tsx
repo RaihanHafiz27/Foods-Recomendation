@@ -14,13 +14,12 @@ const HeroSection = () => {
               <span className="text-amber-500">Moods of Food</span>
             </h1>
             <p className=" text-slate-200 my-4 text-center w-4/5">
-              Temukan hidangan sempurna yang sesuai dengan suasana hati Anda
-              hari ini. Apakah Anda sedang merasa ingin berpetualang,
-              bernostalgia, atau sekadar lapar, kami siap memberikan rekomendasi
-              makanan dan minuman yang lezat dan bergizi dengan tepat untuk
-              Anda!
+              Find the perfect dish to suit your mood today. Whether you're
+              feeling adventurous, nostalgic or just plain hungry, we've got
+              delicious and nutritious food and drink recommendations just right
+              for you!
             </p>
-            <ButtonPrimary text="Coba Sekarang" />
+            <ButtonPrimary text="Try now" />
           </div>
         </div>
       </div>

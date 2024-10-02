@@ -1,26 +1,24 @@
-import { data } from "autoprefixer";
 import Image from "next/image";
 
 const dataFlow = [
   {
     id: 1,
     title: "Step 1",
-    description:
-      "Melakukan Login dengan Akunmu yang sudah terdaftar lalu click coba sekarang.",
+    description: "Login with your registered account and click try now.",
     icon: "/icons/login.png",
   },
   {
     id: 2,
     title: "Step 2",
     description:
-      "Memilih Waktu dan Cuaca atau biarkan Website menentukan otomatis.",
+      "Choose Time and Weather or let the Website determine automatically.",
     icon: "/icons/choose.png",
   },
   {
     id: 3,
     title: "Step 3",
     description:
-      "Mendapatkan rekomendasi makanan terbaik beserta informasi gizinya.",
+      "Get the best food recommendations along with nutritional information.",
     icon: "/icons/star.png",
   },
 ];
@@ -29,13 +27,13 @@ const HowSection = () => {
   return (
     <section className="w-full h-screen flex flex-col justify-center items-center border border-red-500">
       <div className="flex flex-col justify-evenly items-center w-3/5 h-full border border-green-500">
-        <div className="text-center">
+        <div className="flex flex-col justify-center items-center">
           <h2 className="text-3xl font-bold text-amber-600">How It Works</h2>
-          <p className="mt-4">
-            Temukan makanan yang sempurna berdasarkan cuaca dan waktu! Mesin
-            rekomendasi kami menggunakan data cuaca secara Real-time dan waktu
-            saat ini untuk menyarankan makanan yang sesuai dengan lingkungan dan
-            rutinitas harian Anda.
+          <p className="leading-loose mt-4 w-4/5 text-center">
+            Find the perfect meal based on the weather and time of day! Our
+            recommendation engine uses Real-time weather data and the current
+            time of day to suggest meals that suit your environment and daily
+            routine.
           </p>
         </div>
         <div className="flex w-full border border-blue-500">
