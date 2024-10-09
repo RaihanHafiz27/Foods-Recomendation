@@ -61,8 +61,8 @@ const dataCompany = [
 const dataServices = [
   {
     id: 1,
-    text: "FAQ",
-    url: "/faq",
+    text: "Terms of Service",
+    url: "/terms",
   },
   {
     id: 2,
@@ -71,8 +71,8 @@ const dataServices = [
   },
   {
     id: 3,
-    text: "Terms of Service",
-    url: "/terms",
+    text: "FAQ",
+    url: "/faq",
   },
 ];
 
@@ -80,30 +80,30 @@ const Footer = () => {
   return (
     <footer
       className="w-full h-auto flex flex-col justify-center items-center border border-red-500 "
-      style={{ backgroundColor: "#d9b382" }}
+      style={{ backgroundColor: "#5F3B22" }}
     >
-      <div className=" w-3/5 flex flex-col justify-center items-center my-5">
-        <div className="w-full border border-black flex mt-10">
-          <div className="flex flex-col  border border-white w-1/2">
+      <div className=" w-11/12 lg:w-3/5 border border-pink-400 flex flex-col justify-center items-center my-5">
+        <div className="w-full border border-yellow-500 flex flex-col md:flex-row ">
+          <div className="flex flex-col text-center border border-white w-full lg:w-1/2">
             <div className="w-full flex justify-center items-center">
               <Image
-                src="/icons/logo-black.png"
+                src="/icons/moodfoods-white.png"
                 alt="logo"
                 width={500}
                 height={500}
                 className="w-1/2 h-auto"
               />
             </div>
-            <p className="my-4">
+            <p className="text-sm 2xl:text-base my-4 text-slate-200">
               Moods of Food is the best personalized food recommendation service
               site based on weather and time of day.
             </p>
-            <p className="font-semibold">
+            <p className="text-sm 2xl:text-base font-semibold text-slate-200">
               muhammadraihan86185@gmail.com | github : RaihanHafiz27
             </p>
           </div>
-          <div className="border flex justify-end items-center border-green-400 w-1/2">
-            <div className="flex flex-col justify-between h-full border border-black w-11/12">
+          <div className="border flex justify-center lg:justify-end items-center border-green-400 w-full my-4 lg:my-0 lg:w-1/2">
+            <div className="flex flex-col justify-between h-full border border-black w-full lg:w-11/12">
               <div className="flex justify-evenly">
                 <LinkFooter title="Company" links={dataCompany} />
                 <LinkFooter title="Services" links={dataServices} />
@@ -121,7 +121,7 @@ const Footer = () => {
                           alt={data.title}
                           width={100}
                           height={100}
-                          className="w-14 h-auto"
+                          className="w-12 2xl:w-14 h-auto"
                         />
                       </Link>
                     </li>
@@ -132,7 +132,7 @@ const Footer = () => {
           </div>
         </div>
         <hr className="w-full border-t border-slate-200 my-4" />
-        <p className="">
+        <p className="text-slate-200 text-sm 2xl:text-base text-center">
           © 2024 Moods of Food. Unauthorized duplication is a violation of
           applicable laws.
         </p>

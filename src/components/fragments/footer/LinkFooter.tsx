@@ -14,13 +14,13 @@ type LinkFooterProps = {
 
 const LinkFooter: React.FC<LinkFooterProps> = ({ title, links }) => {
   return (
-    <div>
+    <div className="text-slate-200 text-sm 2xl:text-base ">
       <h3 className="font-bold">{title}</h3>
       <ul>
         {links.map((link, id) => (
           <li
             key={id}
-            className="hover:text-amber-600 transition duration-500 transform hover:scale-110"
+            className="my-2 hover:text-pink-500 transition duration-500 transform hover:scale-110"
           >
             <Link href={link.url}>{link.text}</Link>
           </li>

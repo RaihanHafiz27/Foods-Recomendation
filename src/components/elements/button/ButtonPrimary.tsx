@@ -4,7 +4,7 @@ interface Props {
 
 const ButtonPrimary = (text: Props) => {
   return (
-    <button className="bg-amber-100 px-4 py-2 rounded-md text-slate-800">
+    <button className="bg-amber-500 hover:bg-amber-600 px-8 py-2 rounded-md text-slate-200">
       {text.text}
     </button>
   );
