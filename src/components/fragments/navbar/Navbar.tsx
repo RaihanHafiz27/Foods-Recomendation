@@ -218,9 +218,9 @@ const Navbar = () => {
               <li key={id} className="mx-4">
                 <Link
                   href={item.link}
-                  className={`transition duration-500 hover:text-pink-500 ${
+                  className={`transition duration-500 hover:text-amber-500 ${
                     pathname === item.link
-                      ? "text-pink-500 font-semibold underline underline-offset-8 decoration-2"
+                      ? "text-amber-500 font-semibold underline underline-offset-8 decoration-2"
                       : "text-slate-200"
                   }`}
                 >
@@ -233,7 +233,7 @@ const Navbar = () => {
         {/* button for large screen */}
         <div className="hidden flex-shrink-0 lg:flex justify-center items-center border border-green-500">
           <button className="relative inline-flex items-center justify-center px-8 py-2 overflow-hidden text-sm font-medium tracking-tighter text-white rounded-lg group">
-            <span className="absolute w-0 h-0 transition-all duration-1000 ease-out bg-pink-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
+            <span className="absolute w-0 h-0 transition-all duration-1000 ease-out bg-amber-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
             <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
             <span className="relative">Login</span>
           </button>

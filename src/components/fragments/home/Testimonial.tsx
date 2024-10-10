@@ -32,18 +32,37 @@ const TestimonialSection = () => {
     <section className="w-full min-h-screen flex flex-col justify-center items-center border border-red-500">
       <div className="w-11/12 lg:w-3/5 border border-red-500 flex-1 flex flex-col justify-evenly items-center">
         <div className="flex flex-col justify-center items-center">
-          <h2 className="text-3xl font-bold text-amber-500">Testimonials</h2>
-          <p className="text-sm 2xl:text-base leading-loose mt-4 w-4/5 text-center text-gray-800">
+          <h2
+            className="text-3xl font-bold text-amber-500"
+            data-aos="zoom-in"
+            data-aos-duration={2500}
+            data-aos-delay={200}
+          >
+            Testimonials
+          </h2>
+          <p
+            className="text-sm 2xl:text-base leading-loose mt-4 w-4/5 text-center text-slate-200"
+            data-aos="fade-up"
+            data-aos-duration={3000}
+            data-aos-delay={200}
+          >
             At Moods of Food, we help you find the perfect meal, whether it's a
             rainy morning or a sunny afternoon. Our users love the way we
             customize food recommendations based on the weather and time of day.
             Here's what they have to say about their experience!
           </p>
         </div>
-        <div className="border border-green-500 grid grid-cols-1 lg:grid-cols-3 gap-4 mt-10 lg:mt-0 2xl:gap-4">
+        <div className=" border border-green-500 grid grid-cols-1 lg:grid-cols-3 gap-y-4 mt-10 lg:mt-0 2xl:gap-10">
           {dataTestimonial.map((data, id) => (
             <div
-              className="bg-white p-4 my-6 lg:my-0  max-w-xs relative rounded-lg"
+              className="bg-gray-200 p-4 my-6 lg:my-0 max-w-xs relative rounded-lg"
+              style={{
+                boxShadow: "4px 8px 2px rgba(0, 0, 0, 0.5)",
+              }}
+              data-aos="flip-right"
+              data-aos-duration={2000}
+              data-aos-delay={id * 500}
+              data-aos-once="true"
               key={id}
             >
               <Image

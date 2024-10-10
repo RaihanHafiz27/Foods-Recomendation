@@ -20,7 +20,7 @@ const LinkFooter: React.FC<LinkFooterProps> = ({ title, links }) => {
         {links.map((link, id) => (
           <li
             key={id}
-            className="my-2 hover:text-pink-500 transition duration-500 transform hover:scale-110"
+            className="my-2 hover:text-amber-500 transition duration-500 transform hover:scale-110"
           >
             <Link href={link.url}>{link.text}</Link>
           </li>

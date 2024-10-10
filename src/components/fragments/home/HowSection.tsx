@@ -28,8 +28,20 @@ const HowSection = () => {
     <section className="w-full min-h-screen flex flex-col justify-center items-center border border-red-500">
       <div className="flex flex-col justify-evenly items-center w-full lg:w-3/5 flex-1 my-10 lg:my-0 border border-green-500">
         <div className="flex flex-col justify-center items-center">
-          <h2 className="text-3xl font-bold text-amber-500">How It Works</h2>
-          <p className="text-sm 2xl:text-base leading-loose mt-4 w-4/5 text-center text-slate-200">
+          <h2
+            className="text-3xl font-bold text-amber-500"
+            data-aos="fade-up"
+            data-aos-duration={2000}
+            data-aos-delay={200}
+          >
+            How It Works
+          </h2>
+          <p
+            className="text-sm 2xl:text-base leading-loose mt-4 w-4/5 text-center text-slate-200"
+            data-aos="fade-up"
+            data-aos-duration={2000}
+            data-aos-delay={600}
+          >
             Find the perfect meal based on the weather and time of day! Our
             recommendation engine uses Real-time weather data and the current
             time of day to suggest meals that suit your environment and daily
@@ -48,13 +60,26 @@ const HowSection = () => {
                   alt={data.title}
                   width={500}
                   height={500}
+                  data-aos="fade-right"
+                  data-aos-duration={2000}
+                  data-aos-delay={id * 200}
                   className="w-20 h-auto"
                 />
                 <div className="ml-2 2xl:ml-4">
-                  <h4 className="text-base 2xl:text-lg font-semibold text-pink-500">
+                  <h4
+                    className="text-base 2xl:text-lg font-semibold text-amber-500"
+                    data-aos="fade-down"
+                    data-aos-duration={2000}
+                    data-aos-delay={id * 200}
+                  >
                     {data.title}
                   </h4>
-                  <p className="text-sm 2xl:text-base  text-slate-200">
+                  <p
+                    className="text-sm 2xl:text-base  text-slate-200"
+                    data-aos="fade-up"
+                    data-aos-duration={2000}
+                    data-aos-delay={id * 200}
+                  >
                     {data.description}
                   </p>
                 </div>
@@ -63,11 +88,15 @@ const HowSection = () => {
           </div>
           <div className="w-full md:w-1/2 flex justify-center items-center">
             <Image
-              src="/images/how-2.png"
+              src="/images/how.png"
               alt="how"
               width={500}
               height={500}
               quality={100}
+              data-aos="fade-up"
+              data-aos-duration={2000}
+              data-aos-delay={200}
+              data-aos-once="true"
               className="w-4/5 h-auto"
             />
           </div>

@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import LinkFooter from "./LinkFooter";
+import { useState } from "react";
 
 const dataContact = [
   {
@@ -77,6 +80,8 @@ const dataServices = [
 ];
 
 const Footer = () => {
+  const [isHover, setIsHover] = useState(false);
+
   return (
     <footer
       className="w-full h-auto flex flex-col justify-center items-center border border-red-500 "
@@ -87,11 +92,17 @@ const Footer = () => {
           <div className="flex flex-col text-center border border-white w-full lg:w-1/2">
             <div className="w-full flex justify-center items-center">
               <Image
-                src="/icons/moodfoods-white.png"
+                src={
+                  isHover
+                    ? "/icons/moodfoods.png"
+                    : "/icons/moodfoods-white.png"
+                }
                 alt="logo"
                 width={500}
                 height={500}
-                className="w-1/2 h-auto"
+                className="w-1/2 h-auto hover:scale-110 transition duration-500 ease-in-out"
+                onMouseEnter={() => setIsHover(true)}
+                onMouseLeave={() => setIsHover(false)}
               />
             </div>
             <p className="text-sm 2xl:text-base my-4 text-slate-200">
