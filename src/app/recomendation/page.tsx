@@ -17,7 +17,7 @@ const timeOptions = [
 
 const weatherOptions = [
   { label: "Hot", value: "hot" },
-  { label: "Clear", value: "clear" },
+  { label: "Cloud", value: "cloud" },
   { label: "rainy", value: "rainy" },
   { label: "Cold", value: "cold" },
 ];
@@ -25,6 +25,8 @@ const weatherOptions = [
 const RecomendationFoodPage = () => {
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [cloud, setCloud] = useState<string>("");
+  const [status, setStatus] = useState<string>("");
 
   useEffect(() => {
     // meminta izin lokasi
@@ -36,15 +38,44 @@ const RecomendationFoodPage = () => {
         const apiKey = "2b0b30b7b7694948ab671942241010";
         const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=yes`;
 
+        console.log(position);
+        console.log(lat);
+        console.log(lon);
+
         // mengambil data cuaca berdasarkan kordinat
         fetch(url)
           .then((response) => {
+            console.log(response);
             if (!response.ok) {
               throw new Error("Gagal meminta data cuaca");
             }
             return response.json();
           })
           .then((data) => {
+            console.log(data);
+            console.log(data.location.name);
+            if (data.current.temp_c >= 25) {
+              setCloud("/icons/sunny.png");
+              setStatus(
+                "The sun is out today, and your body needs some refreshment! Try fresh foods that keep you cool and energized."
+              );
+            } else if (data.current.temp_c >= 20 && data.current.temp_c < 25) {
+              setCloud("/icons/cloudy.png");
+              setStatus(
+                "Clouds are appearing in the sky, but not to worry, savory and filling food is ready to accompany your day."
+              );
+            } else if (data.current.temp_c >= 15 && data.current.temp_c < 20) {
+              setCloud("/icons/rainy.png");
+              setStatus(
+                "The raindrops bring a cozy atmosphere. It's time to indulge in warm and soupy food, like a hug in a bowl of soup."
+              );
+            } else {
+              setCloud("/icons/snow.png");
+              setStatus(
+                "Brrrr! The cold air is calling us to eat warm soupy dishes that can chase the cold away from our bodies."
+              );
+            }
+            console.log(data.location.region);
             setWeather(data);
           })
           .catch((error) => {
@@ -64,31 +95,58 @@ const RecomendationFoodPage = () => {
     );
   }, []);
 
-  console.log(weather);
-
   return (
     <section className="w-full h-auto flex justify-center items-center border border-red-500">
-      <div className="w-full h-screen flex flex-col border border-green-400">
+      <div className="w-full h-screen flex flex-col justify-center items-center border border-green-400">
         <div
-          className="flex flex-col justify-evenly items-center h-3/5 bg-center bg-no-repeat bg-cover border border-blue-500"
+          className="w-full flex flex-col justify-end items-center h-3/5 bg-center bg-no-repeat bg-cover border border-blue-500"
           style={{ backgroundImage: 'url("/images/bg-food.jpg")' }}
         >
-          <h1 className="text-5xl font-bold text-slate-200">
-            Recomendation Foods
-          </h1>
-          {weather && (
-            <>
-              <p className="text-slate-200">{weather.location.region}</p>
-              <p className="text-slate-200">
-                Sepertinya hari ini{" "}
-                {weather.current.condition.text.toLowerCase()} di{" "}
-                {weather.location.name}. Suhu saat ini adalah{" "}
-                {weather.current.temp_c}°C.
-              </p>
-            </>
-          )}
+          <div className="border border-white w-1/2 flex flex-col justify-center items-center h-3/4">
+            <h1 className="text-4xl font-semibold text-slate-200">
+              Good Evening Kanna Anissa 🤗
+            </h1>
+            {weather && (
+              <>
+                <div className="text-slate-200 font-semibold text-3xl flex justify-center items-center my-4">
+                  <p className="">{weather.location.name}</p>
+                  <Image
+                    src={cloud}
+                    alt="cloudy"
+                    width={500}
+                    height={500}
+                    className="w-20 h-20 mx-4"
+                  />
+                  <p>{weather.current.temp_c}°C</p>
+                </div>
+                <p className="w-3/5 text-slate-200 text-2xl text-center">
+                  {status}
+                </p>
+              </>
+            )}
+          </div>
         </div>
-        <div className="flex-grow border border-yellow-500">world</div>
+        <div className="flex-grow w-4/5 border border-yellow-500 p-2">
+          <div className="flex justify-between border border-red-500">
+            <button className="bg-amber-500 hover:bg-amber-600 px-8 py-2 rounded-md">
+              automatically
+            </button>
+            <div className="flex justify-between items-center">
+              <Select
+                htmlFor="weather"
+                description="Select Weather"
+                options={weatherOptions}
+              />
+              <Select
+                htmlFor="time"
+                description="Select Time"
+                options={timeOptions}
+              />
+            </div>
+            <Searchbar />
+          </div>
+          <div>world</div>
+        </div>
       </div>
     </section>
   );

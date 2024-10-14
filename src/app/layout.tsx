@@ -8,11 +8,18 @@ import Navbar from "@/components/fragments/navbar/Navbar";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
+
+const disableNavbar = ["/login"];
+
+const disableFooter = ["/login"];
+
+const bgSlatePages = ["/login", "/register"];
 
 // export const metadata: Metadata = {
 //   title: "Create Next App",
@@ -24,18 +31,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const pathname = usePathname();
   useEffect(() => {
     AOS.init();
   });
   return (
     <html lang="id">
       <body
-        className={` ${poppins.className}`}
-        style={{ backgroundColor: "#5F3B22" }}
+        className={` ${poppins.className} ${
+          bgSlatePages.includes(pathname) ? "bg-slate-200" : "bg-[#5F3B22]"
+        }`}
       >
-        <Navbar />
+        {!disableNavbar.includes(pathname) && <Navbar />}
         {children}
-        <Footer />
+        {!disableFooter.includes(pathname) && <Footer />}
       </body>
     </html>
   );
