@@ -9,15 +9,16 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+// import { SessionProvider } from "next-auth/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
-const disableNavbar = ["/login"];
+const disableNavbar = ["/login", "/register"];
 
-const disableFooter = ["/login"];
+const disableFooter = ["/login", "/register"];
 
 const bgSlatePages = ["/login", "/register"];
 

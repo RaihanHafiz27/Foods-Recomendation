@@ -9,13 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@firebasegen/default-connector": "file:dataconnect-generated/js/default-connector",
     "aos": "^2.3.4",
+    "bcrypt": "^5.1.1",
+    "firebase": "^10.14.1",
     "next": "14.2.13",
+    "next-auth": "^4.24.8",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
     "@types/aos": "^3.0.7",
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
