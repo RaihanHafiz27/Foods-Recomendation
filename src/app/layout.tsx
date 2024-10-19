@@ -9,6 +9,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { SessionProvider } from "next-auth/react";
 // import { SessionProvider } from "next-auth/react";
 
 const poppins = Poppins({
@@ -43,9 +44,11 @@ export default function RootLayout({
           bgSlatePages.includes(pathname) ? "bg-slate-200" : "bg-[#5F3B22]"
         }`}
       >
-        {!disableNavbar.includes(pathname) && <Navbar />}
-        {children}
-        {!disableFooter.includes(pathname) && <Footer />}
+        <SessionProvider>
+          {!disableNavbar.includes(pathname) && <Navbar />}
+          {children}
+          {!disableFooter.includes(pathname) && <Footer />}
+        </SessionProvider>
       </body>
     </html>
   );

@@ -18,7 +18,11 @@ const Navbar = () => {
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  // const { data: session, status }: { data: any; status: string } = useSession();
+  const { data: session, status }: { data: any; status: string } = useSession();
+
+  console.log(status);
+  console.log(session?.user?.fullname);
+  console.log(session?.user?.password);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,15 +67,28 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
+        {status === "authenticated" && <p>{session?.user?.email}</p>}
         {/* button for large screen */}
         <div className="hidden flex-shrink-0 lg:flex justify-center items-center border border-green-500">
-          <button className="relative inline-flex items-center justify-center px-8 py-2 overflow-hidden text-sm font-medium tracking-tighter text-white rounded-lg group">
-            <span className="absolute w-0 h-0 transition-all duration-1000 ease-out bg-amber-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
-            <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
-            <span className="relative" onClick={() => signIn()}>
-              Login
-            </span>
-          </button>
+          {status === "authenticated" ? (
+            <button
+              className="relative inline-flex items-center justify-center px-8 py-2 overflow-hidden text-sm font-medium tracking-tighter text-white rounded-lg group"
+              onClick={() => signOut()}
+            >
+              <span className="absolute w-0 h-0 transition-all duration-1000 ease-out bg-amber-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
+              <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
+              <span className="relative">Logout</span>
+            </button>
+          ) : (
+            <button
+              className="relative inline-flex items-center justify-center px-8 py-2 overflow-hidden text-sm font-medium tracking-tighter text-white rounded-lg group"
+              onClick={() => signIn()}
+            >
+              <span className="absolute w-0 h-0 transition-all duration-1000 ease-out bg-amber-500 rounded-full group-hover:w-56 group-hover:h-56"></span>
+              <span className="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent"></span>
+              <span className="relative">Login</span>
+            </button>
+          )}
         </div>
         {/* Button for Mobile Screen */}
         <div className="flex lg:hidden">

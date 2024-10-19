@@ -39,10 +39,12 @@ export const register = async (data: {
     where("email", "==", data.email)
   );
   const snapshot = await getDocs(q);
+
   const users = snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
+
   if (users.length > 0) {
     return {
       status: false,

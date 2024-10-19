@@ -35,12 +35,8 @@ const RecomendationFoodPage = () => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
 
-        const apiKey = "2b0b30b7b7694948ab671942241010";
+        const apiKey = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
         const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${lat},${lon}&aqi=yes`;
-
-        console.log(position);
-        console.log(lat);
-        console.log(lon);
 
         // mengambil data cuaca berdasarkan kordinat
         fetch(url)

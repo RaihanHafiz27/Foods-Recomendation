@@ -54,8 +54,11 @@ const LoginPage = () => {
             src={"/images/sushi.jpg"}
             alt="breakfast"
             quality={100}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            // layout="fill"
+            // objectFit="cover"
+            style={{ objectFit: "cover" }}
             className="w-full rounded-lg"
           />
           <div className="absolute border border-black bottom-0 right-1">
