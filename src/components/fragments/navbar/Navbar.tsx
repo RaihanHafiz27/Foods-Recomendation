@@ -20,10 +20,6 @@ const Navbar = () => {
   const pathname = usePathname();
   const { data: session, status }: { data: any; status: string } = useSession();
 
-  console.log(status);
-  console.log(session?.user?.fullname);
-  console.log(session?.user?.password);
-
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -67,7 +63,7 @@ const Navbar = () => {
             ))}
           </ul>
         </div>
-        {status === "authenticated" && <p>{session?.user?.email}</p>}
+
         {/* button for large screen */}
         <div className="hidden flex-shrink-0 lg:flex justify-center items-center border border-green-500">
           {status === "authenticated" ? (
@@ -93,7 +89,7 @@ const Navbar = () => {
         {/* Button for Mobile Screen */}
         <div className="flex lg:hidden">
           <button onClick={() => setIsOpen(!isOpen)} className="relative group">
-            <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[40px] h-[40px] transform transition-all bg-pink-700 duration-200">
+            <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[40px] h-[40px] transform transition-all bg-amber-600 duration-200">
               <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
                 <div
                   className={`bg-white h-[2px] w-7 transform transition-all duration-300 origin-left ${
@@ -148,12 +144,15 @@ const Navbar = () => {
                   height={500}
                   className="w-10 h-auto rounded-full"
                 />
-                <p className="text-sm text-slate-200">Kanna Anissa Syifa</p>
+                {status === "authenticated" && (
+                  <p className="text-slate-200">{session?.user?.fullname}</p>
+                )}
+                {/* <p className="text-sm text-slate-200">Kanna Anissa Syifa</p> */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
                   className="text-white"
                 >
-                  <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[40px] h-[40px] transform transition-all bg-pink-700 duration-200">
+                  <div className="relative flex overflow-hidden items-center justify-center rounded-full w-[40px] h-[40px] transform transition-all bg-amber-600 duration-200">
                     <div className="flex flex-col justify-between w-[20px] h-[20px] transform transition-all duration-300 origin-center overflow-hidden">
                       <div
                         className={`bg-white h-[2px] w-7 transform transition-all duration-300 origin-left ${
@@ -200,8 +199,8 @@ const Navbar = () => {
                         href={item.link}
                         className={
                           pathname === item.link
-                            ? "text-pink-500"
-                            : "text-slate-200 transform hover:text-pink-500 duration-300"
+                            ? "text-amber-500"
+                            : "text-slate-200 transform hover:text-amber-600 duration-300"
                         }
                       >
                         {item.title}
@@ -212,9 +211,21 @@ const Navbar = () => {
               </div>
             </div>
             <div className="p-2 border border-pink-500 w-full">
-              <button className="text-white bg-pink-500 w-full py-2 rounded-lg">
-                Login
-              </button>
+              {status === "authenticated" ? (
+                <button
+                  onClick={() => signOut()}
+                  className="text-white bg-amber-500 hover:bg-amber-600 w-full py-2 rounded-lg"
+                >
+                  Logout
+                </button>
+              ) : (
+                <button
+                  onClick={() => signIn()}
+                  className="text-white bg-amber-500 hover:bg-amber-600  w-full py-2 rounded-lg"
+                >
+                  Login
+                </button>
+              )}
             </div>
           </div>
         </div>
